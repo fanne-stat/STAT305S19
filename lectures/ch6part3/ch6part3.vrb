@@ -1,0 +1,14 @@
+\frametitle{p-values}
+\begin{itemize}
+\item A {\bf p-value} is the probability of getting a result at least as extreme as the one observed under the null hypothesis.
+\pause \item More specifically, it's the probability (assuming the null hypothesis is true) of observing a test statistic farther into the rejection region than the observed test statistic.
+\end{itemize}
+
+\pause \begin{center}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=0.6\textwidth,height=0.6\textheight]{figure/unnamed-chunk-5-1}
+
+\end{knitrout}
+\end{center}

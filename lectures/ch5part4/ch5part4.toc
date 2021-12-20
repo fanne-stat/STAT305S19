@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Quantiles}{2}{0}{1}
+\beamer@sectionintoc {2}{Expected Value}{9}{0}{2}
+\beamer@sectionintoc {3}{Variance}{16}{0}{3}
+\beamer@sectionintoc {4}{Functions of random variables}{23}{0}{4}

@@ -1,0 +1,13 @@
+\frametitle{Answers: sensitivity to outliers}
+
+
+\begin{tabular}{l|c|c}
+Data & $x_i$ & $y_i$  \\ \hline
+Mean & 2 &136210582.666667  \\
+Median & 1.5 & 1.5 \\
+Mode & 1 & 1\\
+Sample Variance & 3.2 & 111319934694019232 \\
+Sample Std. Dev. & 1.78885438199983 &333646421.671235 \\
+Range & 5 & 817263489 \\
+IQR & 2& 2\\
+\end{tabular}

@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{Two-Sample Inference: Large Samples}{2}{0}{1}
+\beamer@sectionintoc {2}{Two-Sample Inference: Small samples}{6}{0}{2}

@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{The Discrete Case}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Joint Distributions}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Marginal Distributions}{11}{0}{1}
+\beamer@subsectionintoc {1}{3}{Conditional Distributions}{15}{0}{1}
+\beamer@subsectionintoc {1}{4}{Independence}{20}{0}{1}
+\beamer@sectionintoc {2}{The Continuous Case}{24}{0}{2}

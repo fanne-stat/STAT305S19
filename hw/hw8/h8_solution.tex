@@ -1,0 +1,182 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[hmargin = 1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\setlist[2]{
+font = \color{black},
+before = {\color{red}}
+}
+\usepackage{textcomp}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+
+
+
+\begin{center} \LARGE
+Homework 8
+\end{center}
+\begin{center} \Large
+Due March 12, 2020 at 11:59 PM 
+\end{center}
+
+
+
+\begin{enumerate}
+	
+	\item P. 323 : 7 (5 points)
+
+{\color{red} 
+  The probability of one part failing to meet inspection is equal to the long-run fraction of parts failing to meet inspection, if the part measurements are considered to be identical random variables. You need to make $\mu$ small enough so that
+  \[P(X > 3.150) \leq 0.003\]
+  This is equivalent to $P(X \leq 3.150) > 0.97$, which is equivalent to $P\left(Z \leq \frac{3.150 - \mu}{0.002}\right) > 0.97$, where $Z$ is a standard normal random variable. Looking up 0.97 in the body of Table B.3 
+  \[\frac{3.150 - \mu}{0.002} > 1.88,\]
+  or $\mu < 3.14624.$
+}
+	\item P. 332: 42 ($2 \times 5$ points)
+	
+	\begin{enumerate}
+	\item
+	The probability of an individual depth being within specification is the same as the long-run fraction of depths within specifications, if successive shelf depths can be considered identical random variables.
+	\begin{align*}
+	P(0.0275 \leq X \leq 0.0278) & = P(X \leq 0.0278) - P(X < 0.0275)\\
+	& = P(Z \leq 2) - P(Z < -1)\\
+	& = 0.9773 - 0.1587 = 0.8186
+\end{align*}	
+	($Z$ is a standard normal random variable.)
+	
+	\item
+	Assuming that $\mu = 0.02765$, we want
+	\[P(0.0275 \leq X \leq 0.0278) = 0.98\]
+	
+By symmetry, this is equivalent to $P(X \leq 0.0278) = 0.99$, which is equivalent to 
+\[P\left(Z \leq \frac{0.0278 - 0.02765}{\sigma}\right) = 0.99\]
+
+Looking uo 0.99 in the body of Table B.3, this means that
+\[\frac{0.00015}{\sigma} \approx 2.33\]
+or that $\sigma \approx 0.00006438.$
+	\end{enumerate}
+	\item P. 322: 3 (5 $\times$ 5 points)
+	
+	{\color{red} From P. 263:1, $E(X) = \mu = \frac{13}{27},\, Var(X) = \sigma = 0.28808$.}
+	\begin{enumerate}
+	\item
+  
+  \[E(\bar(X)) = \mu = \frac{13}{27},\, SD(\bar{X}) = \sqrt{Var(\bar{X})} = \sqrt{\frac{\sigma^2}{n}} = \frac{0.28808}{\sqrt{25}} = 0.05762.\]
+  
+  \item
+  Because $n$ is large and the individual $X$'s are independe, the central limit theorem says that the distribution of $\bar{X}$ is approximatelt normal. From part (a), the distribution of $\bar{X}$ is approximately normal with mean $\frac{13}{27}$ and standard deviation 0.05762.
+  
+  \item
+  \begin{align*}
+  P(\bar{X} > 0.5) & = 1 - P(\bar{X} < 0.5) \\
+  & = 1 - P\left(\frac{\bar{X} - \frac{13}{27}}{0.05762} \leq \frac{0.5 - \frac{13}{27}}{0.05762}\right)\\
+  & = 1 - P(Z \leq 0.321) \quad \mbox{where $Z$ is standard normal}\\
+  & = 1 - 0.6255 = 0.3745.
+  \end{align*}
+  
+  \item
+  \begin{align*}
+  P(0.4615 \leq \bar{X} \leq 0.5015) & = P(\bar{X} \leq 0.5015) - P(\bar{X} < 0.4615)\\
+  & = P(Z \leq 0.35) - P(Z < -0.35)\\
+  & = 0.6368 - 0.3632 = 0.2736.
+  \end{align*}
+  
+  \item
+  $\bar{X}$ is approximately normal with mean $\frac{13}{27}$ and standard deviation $\frac{0.28808}{\sqrt{100}} = 0.02881$.
+  \begin{align*}
+  P(\bar{X} > 0.5) & = 1 - P(\bar{X} \leq 0.5)\\
+ & = 1 - P\left(\frac{\bar{X} - \frac{13}{27}}{0.02881} \leq \frac{0.5 - \frac{13}{27}}{0.02881}\right)\\
+ & = 1 - P(Z \leq 0.64)\\
+ & = 1 - 0.7389 = 0.2611.
+  \end{align*}
+  
+  \begin{align*}
+  P(0.4615 \leq \bar{X} \leq 0.5015) & = P(\bar{X} \leq 0.5015) - P(\bar{X} < 0.4615)\\
+  & = P(Z \leq 0.69) - P(Z < -0.69)\\
+  & = 0.7549 - 0.2451 = 0.5098
+  \end{align*}
+	\end{enumerate}
+	\item P. 324: 10 (5 points)
+	
+	{\color{red}
+	Let $X_1, X_2, \ldots, X_{370}$ be the 370 individual sheet thickness. The thickness of the text is then $U = \sum_{i} X_i$. The mean of the sum is the sum of the mean (by linearity of expectation):
+	\[E(U) = E(\sum_{i} X_i) = \sum_{i} E(X_i) = 370 \times 0.1 = 37\]
+	
+	Assuming that the individual thickness are  independent, you can say the variance of the sum is the sum of the variance (the coefficient are squares of ones, and therefore ones):
+	\[Var(U) = Var(\sum_{i} X_i) = \sum_{i} Var(X_i) = 370 \times (0.003)^2 = 0.00333,\]
+	so the standard deviation of $U$ is $\sqrt{0.00333} = 0.577$.
+	}
+	\item P. 326: 20 (5 points)
+	
+	{\color{red}
+	Since the sample size is large, the central limit theorem says that the distribution of $\bar{X}$ is approximately normal. The mean of $\bar{X}$ is $\mu$ and the standard deviation of $\bar{X}$ is $\frac{0.1}{\sqrt{25}}$.
+	
+	\begin{align*}
+	P(\mu - 0.03 \leq bar{X} \leq \mu + 0.03) &= P\left(\frac{-0.03}{\frac{0.1}{\sqrt{25}}} \leq \frac{\bar{X} - \mu}{\frac{0.1}{\sqrt{25}}} \leq \frac{0.03}{\frac{0.1}{\sqrt{25}}}\right)\\
+	& = P(-1.5 \leq Z \leq 1.5)\\
+	& = P(Z \leq 1.5) - P(Z < -1.5)\\
+	& = 0.9332 - 0.0668 = 0.8664.
+	\end{align*}
+	}
+
+\end{enumerate}
+
+
+%\newpage 
+%\nocite{*}
+%\bibliographystyle{plainnat} 
+%\bibliography{}
+\end{document}
+

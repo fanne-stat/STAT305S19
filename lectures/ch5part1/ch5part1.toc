@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{What is a random variable?}{2}{0}{1}
+\beamer@sectionintoc {2}{Probability}{5}{0}{2}
+\beamer@sectionintoc {3}{Probability Mass Functions (pmf)}{10}{0}{3}
+\beamer@sectionintoc {4}{Cumulative Distribution Functions (cdf)}{15}{0}{4}
+\beamer@sectionintoc {5}{Expected Value}{24}{0}{5}
+\beamer@sectionintoc {6}{Variance and Standard Deviation}{33}{0}{6}

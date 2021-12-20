@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{A Review of Simple Linear Regression (Ch. 4)}{2}{0}{1}
+\beamer@sectionintoc {2}{Formalizing the Simple Linear Regression Model}{17}{0}{2}
+\beamer@sectionintoc {3}{Estimating $\sigma ^2$}{22}{0}{3}
+\beamer@sectionintoc {4}{Standardized residuals}{27}{0}{4}
+\beamer@sectionintoc {5}{Inference for the slope parameter}{33}{0}{5}
+\beamer@sectionintoc {6}{F-test and ANOVA table}{43}{0}{6}

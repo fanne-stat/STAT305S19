@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage[hmargin = 1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\setlist[2]{
+font = \color{black},
+before = {\color{red}}
+}
+\usepackage{textcomp}
+\begin{document}
+
+
+<<echo = F>>=
+library(knitr)
+opts_chunk$set(echo = F, message = F, out.width='0.6\\textwidth', fig.asp = 0.618, fig.align = "center")
+options(digits = 3) # R output width
+@
+
+
+\begin{center} \LARGE
+Homework 11
+\end{center}
+\begin{center} \Large
+Due April 16, 2020 at 11:59 PM 
+\end{center}
+
+
+
+\begin{enumerate}
+	\item P. 674: 1 (ignore (e), (g)) (10 points for (b), 8 points for others), dataset: {\tt polyol.jmp} 
+	
+	\begin{itemize}
+	\item[(a)]
+	
+	<<echo = F>>=
+  dat <- read.table("polyol.dat", sep = ",", header = T)
+lm.fit <- lm(Average.Molecular.Weight ~ Pot.Temperature, data = dat)
+  @
+  
+  
+  $s_{LF} = 67.01$. Thus measures the baseline variation in the molecular weight that would be observed for any fixed pot temperature, assuming the SLR model is appropriate.
+  
+  \item[(b)] The residuals versus $x$ and the standard residual versus $x$ plots are almost the same. 
+  
+  <<out.width = '0.8\\textwidth', fig.asp = 0.45>>=
+  resids <- residuals(lm.fit)
+  stdresids <- rstandard(lm.fit)
+  par(mfrow = c(1,2))
+  plot(x = dat$Pot.Temperature, y = resids, xlab = "Pot Temperature", ylab = "Residuals")
+  abline(a = 0, b = 0, col = "red")
+  plot(x = dat$Pot.Temperature, y = stdresids, xlab = "Pot Temperature", ylab = "Standardized Residuals")
+  abline(a = 0, b = 0, col= "red")
+  
+  @
+  
+  \item[(c)]
+  For a 90\% two-sided confidence interval, we use $t_{n-2, 1 - \alpha/2} = t_{6, 0.95} = 1.943$. We calculate $\bar{x} = 212.375, \sum_{i}(x_i - \bar{x})^2 = 8469.875$. So we have
+  \begin{align*}
+  &b_1 \pm t_{n-2, 1 - \alpha/2} \frac{s_{LF}}{\sqrt{\sum_{i} (x_i - \bar{x})}}\\
+  = & 23.49827 \pm 1.943 \frac{67.01}{\sqrt{8469.875}}\\
+   =& (22.08, 24.91)
+  \end{align*}
+  
+  \item[(d)]
+  For a 90\% two-sided confidence interval, we use $t_{n-2, 1 - \alpha/2} = t_{6, 0.95} = 1.943$. 
+  
+  So for the mean at $x = 212$, 
+  \begin{align*}
+  & b_0 + b_1 x \pm t_{n-2, 1 - \alpha/2} s_{LF} \sqrt{\frac{1}{n} + \frac{(x - \bar{x})^2}{\sum_{i} (x_i - \bar{x})^2}}\\
+  = & 1807.063 \pm 1.942 \cdot 67.01 \sqrt{\frac{1}{8} + \frac{0.140625}{8469.875}}\\
+  =& (1761.03, 1853.10)
+  \end{align*}
+  
+  For the mean at $x = 250$, 
+  \begin{align*}
+  & b_0 + b_1 x \pm t_{n-2, 1 - \alpha/2} s_{LF} \sqrt{\frac{1}{n} + \frac{(x - \bar{x})^2}{\sum_{i} (x_i - \bar{x})^2}}\\
+  = & 2699.997 \pm 1.942 \cdot 67.01 \sqrt{\frac{1}{8} + \frac{1415.641}{8469.875}}\\
+  =& (2629.63, 2770.37)
+  \end{align*}
+  
+  \item[(f)]
+  For a 90\% one-sided prediction interval, we use $t_{n-2, 1 - \alpha} = t_{6, 0.9} = 1.440$. 
+  
+  So at $x = 212$, the lower prediction bound is
+  \begin{align*}
+  & b_0 + b_1 x - t_{n-2, 1 - \alpha} s_{LF} \sqrt{1 + \frac{1}{n} + \frac{(x - \bar{x})^2}{\sum_{i} (x_i - \bar{x})^2}}\\
+  = & 1807.063  - 1.440 \cdot 67.01 \sqrt{1 + \frac{1}{8} + \frac{0.140625}{8469.875}}\\
+  = & 1704.72
+  \end{align*}
+  
+  For $x = 250$,
+  \begin{align*}
+  & b_0 + b_1 x - t_{n-2, 1 - \alpha} s_{LF} \sqrt{1 + \frac{1}{n} + \frac{(x - \bar{x})^2}{\sum_{i} (x_i - \bar{x})^2}}\\
+  = & 2699.997 - 1.440 \cdot 67.01 \sqrt{1 + \frac{1}{8} + \frac{1415.641}{8469.875}}\\
+  =& 2590.31
+  \end{align*}
+  
+  \item[(h)]
+  The ANOVA table is
+  \begin{center}
+  \begin{tabular}{lllll}
+  \hline 
+  Source & SS & df & MS & F\\ \hline
+  Regression & 4676798 & 1 & 4676798 & 1041.58\\
+  Error & 26941 & 6 & 4490 & \\ \hline
+  Total & 4703739 & 7 & & \\ \hline
+  
+  \end{tabular}
+  \end{center}
+  The p-value is
+  \[P(F_{1, 6} > 1041.58)\]
+  which is less than 0.001, according to Table B.6E, the 0.999 quantile of $F_{1,6}$ is $35.51 < 1041.58$. This is overwhelming evidence that the mean average molecular weight is related to the pot temperature.
+  
+	\end{itemize}
+	
+\end{enumerate}
+%\newpage 
+%\nocite{*}
+%\bibliographystyle{plainnat} 
+%\bibliography{}
+\end{document}

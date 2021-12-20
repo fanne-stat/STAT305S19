@@ -1,0 +1,25 @@
+\frametitle{Answer: bivariate}
+
+ \small
+Arrange the data in a table, where:
+\begin{itemize}
+\item Each row is a {\bf sample unit}, or thing that you measure (gear, in this case).
+\pause \item Each column is a {\bf variable}, or characteristic that you control or measure.
+\end{itemize}
+
+\pause \begin{center}
+\begin{tabular}{cc}
+Arrangement & Runout \\ \hline
+laid & 5 \\
+laid & 8 \\
+laid & 8 \\
+laid & 9 \\
+laid & 9 \\
+$\vdots$ & $\vdots$ \\
+hung & 31 \\
+hung & 36 \\
+\end{tabular}
+\end{center}
+
+This ``sample unit $\times$ variable" arrangement is the standard way to display data, and it helps account for all the variables.
+

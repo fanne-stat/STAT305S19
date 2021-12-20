@@ -1,0 +1,163 @@
+\documentclass{article}
+\usepackage[hmargin = 1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\setlist[2]{
+font = \color{black},
+before = {\color{red}}
+}
+\setlist[1]{
+leftmargin = 0em
+}
+\usepackage{textcomp}
+\begin{document}
+
+
+<<echo = F>>=
+library(knitr)
+opts_chunk$set(echo = F, message = F, warning = F, out.width='0.6\\textwidth', fig.asp = 0.618, fig.align = "center")
+options(digits = 3) # R output width
+@
+
+
+\begin{center} \LARGE
+Homework 5
+\end{center}
+\begin{center} \Large
+Due February 20, 2020 at 11:59 PM 
+\end{center}
+
+
+
+\begin{enumerate}
+	\item P. 243: 1 
+	\begin{enumerate}
+	\item (3 points)
+	
+<<echo=F, fig.asp = 0.8>>=
+library(tidyverse)
+pmfx <- data.frame(x = c(2, 3, 4, 5, 6), p = c(0.1, 0.2, 0.3, 0.3, 0.1))
+par(cex = 1.5)
+ x = pmfx$p
+ mp <- barplot(height = x, col = "blue", space=0, ylim = c(0, 0.32), xlab = "x", ylab = "f(x)", main = "")
+ axis(side = 1, at = mp, labels = pmfx$x)
+ box()
+ 
+ par(cex = 1)
+ x = pmfx$x
+ y = pmfx$p
+st = stepfun(x = x, y = c(0,cumsum(y)))
+plot(st, verticals = F, xlab = "x", ylab = "F(x)", pch = 16, main = "")
+points(x = x, y = c(0, cumsum(y)[-length(y)]), cex = 1)
+@
+
+
+\clearpage
+\item (2 points)
+
+$E(X) = 2 (0.1) + 3(0.2) + 4(0.3) + 5(0.4) + 6(0.1) = 4.1$
+
+$E(X^2) = 2^2 (0.1) + 3^2 (0.2) + 4^2 (0.3) + 5^2(0.3) + 6^2 (0.1) = \Sexpr{2^2 * (0.1) + 3^2 *(0.2) + 4^2 *(0.3) + 5^2 * (0.3) + 6^2 * (0.1)}$, so 
+\[Var(X) = E(X^2) - (E(X))^2 = \Sexpr{2^2 * (0.1) + 3^2 *(0.2) + 4^2 *(0.3) + 5^2 * (0.3) + 6^2 * (0.1)} - 4.1^2 = 1.29.\]
+The standard deviation of $X$ is $\sqrt{1.29} = 1.136$.
+
+  \end{enumerate}
+  \clearpage
+
+\item P. 244: 4
+
+{\color{red} (3 points for each $p$)
+
+Use equation (5-3) with $n = 5$.
+
+<<fig.asp = 1.1, out.width="0.8\\textwidth">>=
+library(kableExtra)
+ps <- c(0.1, 0.3, 0.5, 0.7, 0.9)
+prob_table <- sapply(0:5, function(x) dbinom(x, size = 5, prob = ps))
+
+exs <- 5*ps
+vars <- 5 *ps *(1 - ps)
+sds <- sqrt(vars)
+
+
+kable(cbind(ps, prob_table, exs, vars, sds), booktabs = T, format = "latex", digits = 4, col.names = c("$p$", "$f(0)$", "$f(1)$", "$f(2)$", "$f(3)$", "$f(4)$", "$f(5)$", "$E(X) = np$", "$Var(X) = np(1-p)$", "Std.Dev."), escape = F) %>% column_spec(1, border_right = T, border_left = F) 
+
+
+
+par(cex = 1.5, mfrow  = c(3,2))
+for(i in 1:5){
+ x = prob_table[i,]
+ mp <- barplot(height = x, col = "blue", space=0, ylim = c(0, 0.6), xlab = "x", ylab = "f(x)", main = paste("p=",ps[i], sep = ""))
+ axis(side = 1, at = mp, labels = 0:5)
+ box()
+}
+@
+
+
+
+
+}
+
+\clearpage
+\item P. 322: 1
+
+{\color{red} Use equation (5-3) with $n = 6$ and $p = 0.9$.}
+\begin{enumerate}
+
+\item (3 points)
+
+$P(X = 6) = 0.531$
+\item (3 points)
+
+$P(X \ge 4) = 0.984$
+
+\item (3 points)
+
+$P(X < 4) = 1 - P(X \ge 4) = 0.016$
+
+\item (3 points)
+
+$E(X) = np = 5.4$
+
+\item (3 points)
+
+$Var(X) = np(1 - p) = 0.54,\, SD(X) = \sqrt{0.54} = 0.735$
+\end{enumerate}
+
+
+\item P. 322: 2
+
+{\color{red} Use equation (5-3) with $n = 10$ and $p = 0.15$.}
+\begin{enumerate}
+\item (3 points)
+
+$P(X = 2) = 0.276$
+
+\item (3 points)
+
+$P(X \ge 1) = 1 - P(X < 1) = 1 - P(X = 0) = 1 - 0.197 = 0.803$
+
+\item (3 points)
+
+$E(X) = np = 1.5$
+
+\item (3 points)
+
+$Var(X) = np(1 - p) = 1.275$
+
+\item (3 points)
+
+$SD(X) = \sqrt{1.275} = 1.129$
+
+Use equation (5-3) with $n = 6$ and $p = 0.9$.
+\end{enumerate}
+
+
+\end{enumerate}
+%\newpage 
+%\nocite{*}
+%\bibliographystyle{plainnat} 
+%\bibliography{}
+\end{document}

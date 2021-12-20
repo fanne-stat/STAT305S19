@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{Prediction Interval}{2}{0}{1}
+\beamer@sectionintoc {2}{Matched Pairs}{6}{0}{2}
+\beamer@sectionintoc {3}{Two-Sample Inference: Large Samples}{17}{0}{3}

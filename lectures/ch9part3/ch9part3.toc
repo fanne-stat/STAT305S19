@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{Multiple Regression: a Review}{2}{0}{1}
+\beamer@sectionintoc {2}{Estimating $\sigma ^2$}{5}{0}{2}
+\beamer@sectionintoc {3}{Standardized Residuals}{11}{0}{3}
+\beamer@sectionintoc {4}{Inference for $\beta _0, \beta _1, \ldots , \beta _{p-1}$}{16}{0}{4}
+\beamer@sectionintoc {5}{Inference for Mean Responses}{26}{0}{5}
+\beamer@subsectionintoc {5}{1}{Individual mean responses}{27}{0}{5}
+\beamer@subsectionintoc {5}{2}{Multiple mean responses}{33}{0}{5}

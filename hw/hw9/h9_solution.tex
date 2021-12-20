@@ -1,0 +1,185 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[hmargin = 1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\setlist[2]{
+font = \color{black},
+before = {\color{red}}
+}
+\usepackage{textcomp}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+
+
+
+\begin{center} \LARGE
+Homework 9
+\end{center}
+\begin{center} \Large
+Due March 26, 2020 at 11:59 PM 
+\end{center}
+
+
+
+\begin{enumerate}
+	
+	\item P. 344 : 2 ($2 \times 5$ points)
+  \begin{enumerate}
+  \item
+  You can use CLT since this is a large sample. The appropriate $z$ for 90\% confidence is 1.645. The interval is 
+  \[142.7 \pm 1.645 \left(\frac{98.2}{\sqrt{26}}\right) = 142.7 \pm 31.68 = [111.02 , 174.38]\]
+  
+  \item 
+  Now $z = 1.96$, and the interval is 
+  \[142.7 \pm 1.96 \left(\frac{98.2}{\sqrt{26}}\right) = 142.7 \pm 37.75 = [104.95, 180.45]\]
+  
+  The interval is wider than the one from (a). In order to have more confidence of containing the mean, the interval must be wider.
+  
+  \item
+  To make a 90\% one-sided confidence interval, we use $\alpha = 0.1$. The appropriate $z$ is $z_{1 - \alpha} = z_{0.9} = 1.28$, so the 90\% one-sided confidence interval is 
+  \[142.7 + 1.28 \left(\frac{98.2}{\sqrt{26}}\right) = 142.7 + 24.65 = 167.35\]
+  
+  This is smaller than the upper endpoint from part (a). Setting the lower endpoint to $-\infty$ requires you to move the upper endpoint in so that the confidence remains at 90\%.
+  
+  \item
+  To make a 95\% one-sided confidence interval, we use $\alpha = 1 - 0.95 = 0.05$. The appropriate $z$ is $z_{1 - \alpha} = z_{0.95} = 1.645$. So the upper endpoint of 95\% one-sided confidence interval is
+  \[142.7 + 1.645 \left(\frac{98.2}{\sqrt{26}}\right) = 174.38\]
+  
+  This is larger than the answer to (c); in order to achieve higher confidence, you must make the interval ``wider''.
+  
+  \item $[111.02, 174.38]$ ppm is a set of plausible values for the mean aluminum content of samples of recycled PET plastic from the recycling pilot plant at Rutgers University. The method used to construct this interval correctly contains means in 90\% of repeated applications. This particular interval either contains the mean or it doesn't (there is no probability involved). However, because the method is correct 90\% of the time, we might say that we have 90\% confidence that it was correct this time. 
+  \end{enumerate}
+	\item P. 344: 4 ($2 \times 6$ points)
+	\begin{enumerate}
+	\item $\bar{x} = 4.6858$ and $s = 0.002900317$.
+	
+	\item
+	Since this is a large sample, you can use CLT. For 98\% confidence, we need $\alpha = 0.02$. The $z$ is $z_{1 - \alpha/2} = z_{0.99} = 2.33$. The two-sided confidence interval is
+	\[4.6858 \pm 2.33 \left(\frac{0.02900317}{\sqrt{50}}\right) = 4.6858 \pm 0.009556884 = [4.676, 4.695]\]
+	
+	\item For 99\% confidence ,we need $\alpha = 0.01$. So $z = z_{1 - \alpha/2} = z_{0.995} = 2.58 $. The two-sided confidence interval is
+	\[4.6858 \pm 2.58 \left(\frac{0.02900317}{\sqrt{50}}\right) = 4.6858 \pm 0.0105823 = [4.675, 4.696]\]
+	
+	The interval is wider than the one in (b). To increase the confidence that $\mu$ is in the interval, you need to make the interval wider.
+	
+	\item
+	To make a 98\% one-sided confidence interval, $\alpha = 0.02$ and $z$ is $z_{1 - \alpha} = z_{0.98} = 2.05$. The lower endpoint is
+	\[4.6858 - 2.05 \left(\frac{0.02900317}{\sqrt{50}}\right) = 4.6858 - 0.008408418 = 4.677\]
+	
+	This is larger than the lower endpoint of the interval in (b). Since the upper endpoint here is set to $\infty$, the lower endpoint must be increased to keep the confidence level the same.
+	
+	\item
+	To make a 99\% one-sided confidence interval, $\alpha = 0.01$ and $z$ is $z_{1 - \alpha} = z_{0.99} = 2.05$. The lower endpoint is
+	\[4.6858 - 2.33 \left(\frac{0.02900317}{\sqrt{50}}\right) = 4.6858 - 0.009556884 = 4.676\]
+	This is smaller than the value in (d); to increase confidence, the interval must be made ``wider''.
+	
+	\item
+	$[4.676, 4.695]$ is a set of plausible values for the mean diameter of this type of screw as measured by this student with these calipers. The method used to construct this interval correctly contains means in 98\% of repeated applications. This particular interval either contains the mean or it doesn't (there is no probability involved). However, because the method is correct 98\% of the time, we might say that we have 98\% confidence that it was correct this time.
+	\end{enumerate}
+	\item P. 361: 1 (use p-value, 14 points)
+	\begin{enumerate}[label = \arabic*.]
+	\item $H_0 : \mu = 200, \, H_a: \mu > 200$
+	\item $\alpha = 0.05$
+	\item The test statistic is
+	\[Z= \frac{\bar{x} - 200}{\frac{s}{\sqrt{26}}}\].
+	
+	Assume $X_1, \ldots, X_{26}$ are iid with mean $\mu = 200$ and varaince $\sigma^2$.
+	
+	Under $H_0$, $Z \sim N(0,1)$ by CLT since sample size $n = 26$ is large. 
+	
+	\item Plugin the observed $\bar{x}$ and $s$, the observed test statistic is
+	\[z = -2.98\]
+	
+	Since it is a one-sided test, the p-value is
+	\[P(Z > -2.98) = 1 - P(Z \leq -2.98) = 0.9986\]
+	
+	\item
+	The p-value is larger than $\alpha$, so we fail to reject $H_0$.
+	
+	\item
+	There is no evidence that the mean aluminum content for samples of recycled plastic is grearer than 200 ppm.
+	\end{enumerate}
+	\item P. 361: 4 (use p-value, 14 points)
+	\begin{enumerate}[label = \arabic*.]
+	\item $H_0 : \mu = 4.70, \, H_a: \mu \neq 4.70$
+	\item $\alpha = 0.05$
+	\item The test statistic is
+	\[Z= \frac{\bar{x} - 4.70}{\frac{s}{\sqrt{50}}}\].
+	
+	Assume $X_1, \ldots, X_{50}$ are iid with mean $\mu = 4.70$ and varaince $\sigma^2$.
+	
+	Under $H_0$, $Z \sim N(0,1)$ by CLT since sample size $n = 50$ is large. 
+	
+	\item Plugin the observed $\bar{x}$ and $s$, the observed test statistic is
+	\[z = -3.46\]
+	
+	Since it is a one-sided test, the p-value is
+	\[P(|Z| > |-3.46|) = 2P(Z < -3.46) = 0.0006\]
+	
+	\item
+	The p-value is smaller than $\alpha$, so we reject $H_0$.
+	
+	\item
+	There is strong evidence that the mean measured diameter differs from nominal.
+	\end{enumerate}
+
+\end{enumerate}
+
+%\newpage 
+%\nocite{*}
+%\bibliographystyle{plainnat} 
+%\bibliography{}
+\end{document}
+

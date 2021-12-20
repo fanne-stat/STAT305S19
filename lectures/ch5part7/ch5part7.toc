@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Functions of Several Random Variables}{2}{0}{1}
+\beamer@sectionintoc {2}{Expectations and variances of linear combinations}{6}{0}{2}
+\beamer@sectionintoc {3}{Approximating the Mean and Variance of a Function}{13}{0}{3}
+\beamer@sectionintoc {4}{The Central Limit Theorem}{17}{0}{4}

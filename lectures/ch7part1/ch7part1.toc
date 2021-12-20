@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{The one-way ANOVA model}{2}{0}{1}
+\beamer@sectionintoc {2}{Residuals and fitted values}{9}{0}{2}
+\beamer@sectionintoc {3}{Variance estimation}{14}{0}{3}
+\beamer@sectionintoc {4}{Standardized residuals}{20}{0}{4}
+\beamer@sectionintoc {5}{Inference}{22}{0}{5}
+\beamer@sectionintoc {6}{Confidence interval for linear combination of means}{37}{0}{6}

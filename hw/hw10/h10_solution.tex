@@ -1,0 +1,150 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[hmargin = 1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\setlist[2]{
+font = \color{black},
+before = {\color{red}}
+}
+\usepackage{textcomp}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+
+
+
+\begin{center} 
+\LARGE
+Homework 10
+\end{center}
+\begin{center} 
+\Large
+Due April 2, 2020 at 11:59 PM 
+\end{center}
+
+
+
+\begin{enumerate}
+
+	\item P. 427: 1
+	\begin{enumerate}
+	\item (10 points)
+	The sample size $n = 10$ is small and the true standard deviation $\sigma$ is unknown . Assuming data are iid and normally distributed, we use $t_{9, 0.975}$ as quantile for the 95\% two-sided C.I.. We have $\bar{x} = 9082.2,\, s = 841.87$, the confidence interval is
+	\[\bar{x} \pm t_{9, 0.975} \frac{s}{\sqrt{n}} = 9082.2 \pm 2.262 \frac{841.87}{\sqrt{10}} = 9082.2 \pm 602.19 = (8480.0, 9684.4)\]
+
+	For the one-sided lower C.I., we use $t_{9, 0.95}$. Therefore we have
+	\[\left(\bar{x} - t_{9, 0.95} \frac{s}{\sqrt{n}}, \infty\right) = \left(9082.2 - 1.833 \frac{841.87}{10}, \infty\right) = (8594.2, \infty)\]
+
+	\item (10 points)
+	The only difference from (a) is that $\sqrt{\frac{1}{n}}$ is replaced with $\sqrt{1 + \frac{1}{n}}$. The two-sided 95\% prediction interval is
+	\[\bar{x} \pm t_{9, 0.975} s \sqrt{1 + \frac{1}{n}} = 9082.2 \pm 2.262 \times 841.87 \sqrt{1 + \frac{1}{10}} = 9082.2 \pm 1997.25 = (7084.9, 11079.5)\]
+	
+	The one-sided lower 95\% prediction interval is
+	\[\left(\bar{x} - t_{9, 0.95} s \sqrt{1 + \frac{1}{{n}}}, \infty\right) = \left(9082.2 - 1.833 \times 841.87\sqrt{1 + \frac{1}{10}}, \infty\right) = (7463.7, \infty)\]
+
+	\end{enumerate}
+	\item P. 427: 2
+	\begin{enumerate}
+	\item (5 points)
+	
+	Label the laid gears Sample 1 and the hung gears Sample 2. Since both of these samples are large, we can apply CLT and use normal distribution as reference distribution.
+	
+	\begin{enumerate}[label=\arabic*.]
+	\item $H_0: \mu_1 - \mu_2 = 0,\, H_a: \mu_1 - \mu_2 < 0.$
+	\item The test statistic is
+	\[Z = \frac{\bar{x}_1 - \bar{x_2} - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}.\]
+
+	Assuming $X_1, X_2, \ldots, X_n$ are iid. Since sample size $n$ is large, we have $Z \sim N(0,1)$.
+
+	\item The observed test statistic is
+	\[z = -4.18\]
+	Sicne the alternative hypothesis is $\mu_1 - \mu_2 < 0$, the probability of observing a more extream test statistic is the probability to the left of the observed statsitic. So the p-value is
+	\[P(Z < z) =  P(Z < -4.18)  < 0.0002\]
+	\item Since the p-value is very small, we reject $H_0$.
+	\item There is significant evidence that the mean of laying method is smaller than the mean of hanging method.
+	\end{enumerate}
+
+	\item (10 points)
+	
+  For 90\% two-side confidence interval, $\alpha = 0.1$, and we use $z_{1 - \alpha/2} = z_{0.95} = 1.645$ for the quantile. The C.I. is
+  \[\bar{x}_1 - \bar{x}_2 \pm z_{1 - \alpha/2} \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}} = 17.949 - 12.632 \pm 1.645 \sqrt{\frac{47.89}{39} + \frac{14.83}{38}} = 5.317 \pm 2.0927 = (3.22, 7.41)\]
+  
+  The one-sided 90\% lower C.I. uses $z_{1 - \alpha} = z_{0.9} = 1.28$. So 
+  \[\left(\bar{x}_1 - \bar{x}_2 - z_{1 - \alpha}\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}, \infty\right) = (3.69, \infty)\]
+
+	\item (5 points)
+	
+	The 90\% two-sided C.I. for mean of laid gears $\mu_2$ uses $z_{1 - \alpha/2} = z_{0.95}$. So
+	\[\bar{x}_2 \pm z_{1 - \alpha/2} \frac{s_2}{\sqrt{n_2}} = 12.632 \pm 1.028 = (11.60, 13.66)\]
+	\end{enumerate}
+	\item P. 428: 6
+	\begin{enumerate}
+	\item (5 points)
+	
+	These formulas are for comparing two means based on two independent samples. Because each bushing was measured twice by each student, there is one paired sample here, not two independent samples.
+	\item (5 points)
+	
+	Compute the differences between student A ad B for each bushing to obatin the differences $d_1, d_2, \ldots, d_{16}$. Since the sample size is small and $\sigma_d$ is unknown, assuming $d_1, d_2, 
+	\ldots, d_{16}$ are iid normal, the 95\% two-sided confidence interval is
+	\[\bar{d} \pm t_{15, 0.975} \frac{s_d}{\sqrt{n}} = -0.00009375 \pm 0.0002414191 = (-0.0003352, 0.0001477).\]
+	Since zero is in this interval, there is no evidence of a mean difference between students.
+	\end{enumerate}
+ \end{enumerate}
+%\newpage 
+%\newpage 
+%\nocite{*}
+%\bibliographystyle{plainnat} 
+%\bibliography{}
+\end{document}
+

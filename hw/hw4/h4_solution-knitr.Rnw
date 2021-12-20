@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage[hmargin = 1in]{geometry}
+\begin{document}
+
+
+<<echo = F>>=
+library(knitr)
+opts_chunk$set(echo = F, message = F)
+options(digits = 3)# R output width
+@
+
+
+\begin{center} \LARGE
+Homework 4
+\end{center}
+\begin{center} \Large
+Due Feburary 13, 2020 at 11:59 PM 
+\end{center}
+
+
+
+\begin{enumerate}
+	\item P. 140: 3 
+	\begin{enumerate}
+	\item 
+<<>>=
+library(tidyverse)
+polyol <- read.table("polyol.dat", header = T, sep = ",")
+lm.fit <- lm(formula = Average.Molecular.Weight ~ Pot.Temperature, data = polyol)
+@
+
+$R^2 = \Sexpr{summary(lm.fit)$r.squared}$.
+
+
+	
+	\end{enumerate}
+	\item P. 161: 1 , dataset: {\tt polyol.jmp} (9 points)
+	\item P. 140: 4 , dataset: {\tt tool\_life.jmp} (3 + 3 + 3 points)
+	\item P. 161: 2 , dataset: {\tt pulp.jmp} ($3 \times 8$ points) (Hint for (g): replication)
+\end{enumerate}
+%\newpage 
+%\nocite{*}
+%\bibliographystyle{plainnat} 
+%\bibliography{}
+\end{document}

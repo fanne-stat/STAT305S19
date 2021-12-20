@@ -1,0 +1,270 @@
+\documentclass{article}
+\usepackage[hmargin = 1in]{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\setlist[2]{
+font = \color{black},
+before = {\color{red}}
+}
+\usepackage{textcomp}
+\begin{document}
+
+
+<<echo = F>>=
+library(knitr)
+opts_chunk$set(echo = F, message = F, out.width='0.6\\textwidth', fig.asp = 0.618, fig.align = "center")
+options(digits = 3) # R output width
+@
+
+
+\begin{center} \LARGE
+Homework 4
+\end{center}
+\begin{center} \Large
+Due February 13, 2020 at 11:59 PM 
+\end{center}
+
+
+
+\begin{enumerate}
+	\item P. 140: 3 
+	\begin{enumerate}
+	\item (1 point)
+	
+<<echo=F>>=
+library(tidyverse)
+polyol <- read.table("polyol.dat", header = T, sep = ",")
+lm.fit <- lm(formula = Average.Molecular.Weight ~ Pot.Temperature, data = polyol)
+@
+
+{\color{red} $R^2 = \Sexpr{summary(lm.fit)$r.squared}$.}
+\item (2 points)
+
+The least square equation is 
+\[\hat{y} = -3174.6 + 23.5 x\]
+
+$\beta_1$ represents the ``true'' average change in molecular weight that accompanies a 1\textdegree{C} increase in pot temperature (assuming that a straight-line model is correct). $b_1 = 23.5$ is a data-based approximation of this value.
+
+<<fig.width = 6>>=
+ggplot(data = polyol, aes(x = Pot.Temperature, y = Average.Molecular.Weight)) + geom_point() + geom_abline(intercept = lm.fit$coefficients[1], slope = lm.fit$coefficients[2], color = "blue") + theme_bw()
+@
+  \item (2 points)
+  
+  The residuals are: \Sexpr{lm.fit$residuals}.
+  
+  <<>>=
+  polyol$Residuals <- lm.fit$residuals
+  ggplot(data = polyol, aes(x = Pot.Temperature, y = Residuals)) + geom_point() + geom_abline(intercept = 0, slope = 0) + theme_bw()
+  polyol$`Fitted Values` <- lm.fit$fitted.values
+  ggplot(data = polyol, aes(x = `Fitted Values`, y = Residuals)) + geom_point() + geom_abline(intercept = 0, slope = 0) + theme_bw()
+  
+  ggplot(data = polyol, aes(sample = Residuals)) + stat_qq() + coord_flip() + xlab("Residual Quantiles")+ylab("Standard Normal Quantiles") + theme_bw()
+  @
+  
+  It is difficult to evaluate the appropriateness of the fitted equation based on so little data. The plots of residuals versus $x$ and residuals versus $\hat{y}$ do not contain any obvious patterns, and thus provide no evidence that the equation is inappropriate. The normal plot of residuals is fairly linear, providing no evidence that the residuals are not bell-shaped.
+  
+\item (1 point)
+
+There is no replication (multiple experimental runs at a particular pot temperature). Replication would validate any conclusions drawn from the experiment, and provide more information to confirm the appropriateness of the fitted equation.
+
+\item (2 points)
+
+For $x = \textrm{188\textdegree{C}}$,
+\[\hat{y} = -3174.6 + 23.5(188) = 1243.1.\]
+
+For $x = \textrm{200\textdegree{C}}$,
+\[\hat{y} = -2174.6 + 23.5(200) = 1525.1.\]
+
+It would not be wise to make a similar prediction at $x = \textrm{70\textdegree{C}}$ because there is no evidence that the fitted relationship is correct for pot temperature as low as $x = \textrm{70\textdegree{C}}$. This would be an extrapolation. Some data should be obtained around $x = \textrm{70\textdegree{C}}$ before making such a prediction.
+  
+
+	
+	\end{enumerate}
+	\item P. 161: 1 
+	
+		{\color{red}
+	(9 points)
+	
+	The least squares equation is
+	\[\hat{ y = -1315 + 5.59 x + .04212x^2}\]
+	
+	<<>>=
+  polyol$Pot.Temperature.Squared <- polyol$Pot.Temperature^2
+  lm.fit <- lm(formula = Average.Molecular.Weight ~ Pot.Temperature + I(Pot.Temperature^2), data = polyol)
+  
+  curve_x <- seq(160, 260, 1)
+  curve_y <- predict(lm.fit, newdata = data.frame(Pot.Temperature = curve_x))
+  
+  ggplot(data = polyol, aes(x = Pot.Temperature, y = Average.Molecular.Weight)) + geom_point() + geom_line(data = data.frame(x = curve_x, y = curve_y), aes(x = x,  y = y), inherit.aes = F, color = "blue") + theme_bw()
+  @
+  
+  $R^2_Q = .996$, compared with $R^2_L = .994$. This is a very small improvement, at a cost of a more complex equation.
+  
+    <<>>=
+  polyol$Residuals <- lm.fit$residuals
+  ggplot(data = polyol, aes(x = Pot.Temperature, y = Residuals)) + geom_point() + geom_abline(intercept = 0, slope = 0) + theme_bw()
+  polyol$`Fitted Values` <- lm.fit$fitted.values
+  ggplot(data = polyol, aes(x = `Fitted Values`, y = Residuals)) + geom_point() + geom_abline(intercept = 0, slope = 0) + theme_bw()
+  
+  ggplot(data = polyol, aes(sample = Residuals)) + stat_qq() + coord_flip() + xlab("Residual Quantiles")+ylab("Standard Normal Quantiles") + theme_bw()
+  @
+  
+  The residuals here are smaller, as they will always be for a more complex model. There is no noticeable improvement in the residual plots, compared to those from the straight-line model. In fact, the residual plots for the quadratic model look more patterned. The scatterplot of $y$ versus $x$ also indicates that the quadratic model would be ``overfitting'' the data. The simpler straight-line relationship seems to be adequate.
+  
+  For the quadratic model, at $x = \textrm{200\textdegree{C}}$,
+  \[ \hat{y} = -1315 + 5.59(200) + .04212(200)^2 = 1487.2,\]
+  which is relatively close to 1525.1 from 4-5 (e).
+  
+	
+
+	}
+	
+	\clearpage
+	\item P. 140: 4 
+	\begin{enumerate}
+	\item (3 points)
+	
+	<<>>=
+  tool_life <- read.table("tool_life.dat", header = T, sep = ",")
+  ggplot(data = tool_life, aes(x = Cutting.Speed, y = Tool.Life))+ geom_point() + theme_bw()
+  @
+  
+  The scatterplot is not linear, so the given straight-line relationship does not seem appropriate. The least squares line is $\hat{y} = 44.075 - .059650x$. The corresponding $R^2$ is .723.
+  
+  \item (3 points)
+  
+  \
+  
+  
+  <<>>=
+  # names(tool_life)
+  lm.fit <- lm(ln.Tool.Life. ~ ln.Cutting.Speed., data = tool_life)
+  ggplot(data = tool_life, aes(x = ln.Cutting.Speed., y = ln.Tool.Life.)) + geom_point() + geom_abline(intercept = lm.fit$coefficients[1], slope = lm.fit$coefficients[2], color = "blue") + xlab("ln(Cutting.Speed)") + ylab("ln(Tool.Life)") + theme_bw()
+  @
+  
+  This scatterplot is much more linear, and a straight-line relationship seems appropriate for the transformed variables. The least squares line is \[\widehat{\ln y} = 24.244 - 5.1857 \ln x.\] The corresponding $R^2$ is .965.
+  
+  \item (3 points)
+  
+  The least squares line is given in part (b). For $x = 550$,
+  \[\widehat{\ln y} = 34.344 - 5.1857\ln(550) = 1.6229\ln{\mathrm{minutes}},\]
+  so $\hat{y} = e^{1.6229} = 5.07\, \mathrm{minutes}$. The implied relationship between $x$ and $y$ is 
+  \begin{align*}
+  &y \approx e^{\beta_0 + \beta_1 \ln x}\\
+  &y \approx e^{\beta_0} e^{\ln x^{\beta_1}}\\
+  &y \approx e^{\beta_0} x^{\beta_1}.
+  \end{align*}
+  With slight rearrangement, this is the same as Taylor's equation for tool life.
+	\end{enumerate}
+	
+	\clearpage
+	\item P. 161: 2 
+	<<>>=
+  pulp <- read.table("pulp.dat", header = T, sep = ",")
+  # names(pulp)
+  lm.fit <- lm(Specific.Surface.Area ~ X.NaOH + Time, data = pulp)
+  @
+  \begin{enumerate}
+  \item (3 points)
+  
+  The least square equation is
+  \[\hat{y} = 6.0483 + .14167x_1 - .016944x_2.\]
+  Assuming the fitted equation is appropriate, this means that as $x_1$ increases by 1\% (holding $x_2$ constant), $y$ increases by roughly $.14167 \mathrm{cm}^3\mathrm{\slash g}$. As $x_2$ increases by 1 minute (holding $x_1$ constant), $y$ decreases by roughly $.016944\mathrm{cm}^3\mathrm{\slash g}$. The $R^2$ corresponding to this equation is .807.
+  
+  \item (3 points)
+  
+  The residuals are \Sexpr{lm.fit$residuals}.
+  
+  <<fig-sub, fig.ncol=2, fig.subcap = rep("", 4), out.width = ".49\\linewidth">>=
+  layout(matrix(c(1,2,3,4), ncol = 2))
+  pulp$Residuals <- lm.fit$residuals
+  ggplot(data = pulp, aes(x = X.NaOH, y = Residuals)) + geom_point() + geom_abline(intercept = 0, slope = 0) + xlab("%NaOH") + theme_bw()
+  ggplot(data = pulp, aes(x = Time, y = Residuals)) + geom_point() + geom_abline(intercept = 0, slope = 0) + xlab("Time (min)")+ theme_bw()
+  pulp$`Fitted Values` <- lm.fit$fitted.values
+  ggplot(data = pulp, aes(x = `Fitted Values`, y = Residuals)) + geom_point() + geom_abline(intercept = 0, slope = 1)+ theme_bw()
+  ggplot(data = pulp, aes(sample= Residuals)) + stat_qq() + coord_flip() + xlab("Residual Quantiles") + ylab("Standard Normal Quantiles")+ theme_bw()
+  @
+  
+  Both the plots of residuals versus $x_1$ and residuals versus $\hat{y}$ show a positive-negative-positive pattern of residuals, indicating that the relationship between $x_1$ and $y$ is not completely accounted for by the current model. These plots suggest adding an $x_1^2$ term. The plot of residuals versus $x_2$ is patternless; $x_2$ seems to be well represented. The normal plot of residuals is fairly linear, indicating that the residuals are bell-shaped.
+  
+  \item (3 points)
+  
+  For $x_2 = 30$, the equation is
+  \begin{align*}
+  \hat{y} &= 6.0483 + .14167 x_1 - .016944(30) \\
+  & = 5.53998 + .14167 x_1.
+  \end{align*}
+  
+  For $x_2 = 60$, the equation is
+  \begin{align*}
+  \hat{y} &= 6.0483 + .14167 x_1 - .016944(60) \\
+  & = 5.03166 + .14167 x_1.
+  \end{align*}
+  
+  For $x_2 = 90$, the equation is
+  \begin{align*}
+  \hat{y} &= 6.0483 + .14167 x_1 - .016944(90) \\
+  & = 4.52334 + .14167 x_1.
+  \end{align*}
+  
+  <<>>=
+  ggplot(data = pulp, aes(x = X.NaOH, y = Specific.Surface.Area)) + geom_point() + geom_line(aes(x = X.NaOH, y = `Fitted Values`, color = factor(Time)), inherit.aes = F) + xlab("%NaOH") + ylab("Specific Surface Area (cm^3/g)") + guides(color = guide_legend(title = "Time")) + theme_bw()
+  @
+  
+  The fitted responses do not match up well, because the relationship between $y$ and $x_1$ (\%NaOH) is not linear for any of the $x_2$ values (Time).
+  
+  \item (3 points)
+  At $x_1 = 10\%$ and $x_2 = 70\mathrm{minutes}$,
+  \[\hat{y} = 6.0483 + .14167(10) - .016944(70) = 6.279\mathrm{\,cm}^3\mathrm{\slash g}.\]
+  
+  It would not be wise to make a similar prediction at $x_1 = 10\%$ and $x_2 = 120 \mathrm{\,minutes}$ because there is no evidence that the fitted relationship is correct under these conditions. This would be extrapolating. Some data should be obtained around $x_1 = 10\%$ and $x_2 = 120 \mathrm{\,minutes}$ before making such a prediction.
+  
+  \item (3 points)
+  The least squares equation is
+  \[\hat{y} = 4.9833 + .260 x_1 + .00081 x_2 - .001972 x_1 x_2,\]
+  and the corresponding $R^2$ is .876. The increase in $R^2$ from .807 to .876 is not very large; using the more complicated equation may not be desirable (this is subjective). Residual plots for this more complicated equation should also be examined before evaluating its appropriateness.
+  
+  \item (3 points)
+  
+  For $x_2 = 30$, the equation is
+  \begin{align*}
+  \hat{y} &= 4.9833 + .260 x_1 + .00081(30) - .001972 x_1 (30)\\
+  &= 5.0076 + .20084 x_1.
+  \end{align*}
+  
+  For $x_2 = 60$, the equation is
+  \begin{align*}
+  \hat{y} &= 4.9833 + .260 x_1 + .00081(60) - .001972 x_1 (60)\\
+  &= 5.0319 + .14168 x_1.
+  \end{align*}
+  
+  For $x_2 = 90$, the equation is
+  \begin{align*}
+  \hat{y} &= 4.9833 + .260 x_1 + .00081(30) - .001972 x_1 (30)\\
+  &= 5.0562 + .08252 x_1.
+  \end{align*}
+  
+  <<>>=
+  lm.fit <- lm(Specific.Surface.Area ~ X.NaOH + Time + X.NaOH:Time, data = pulp)
+  pulp$`Fitted Values` <- lm.fit$fitted.values
+  # summary(lm.fit)
+  ggplot(data = pulp, aes(x = X.NaOH, y = Specific.Surface.Area)) + geom_point() + geom_line(aes(x = X.NaOH, y = `Fitted Values`, color = factor(Time)), inherit.aes = F) + xlab("%NaOH") + ylab("Specific Surface Area (cm^3/g)") + guides(color = guide_legend(title = "Time")) + theme_bw()
+  @
+  
+  The new model allows there to be a different slope for different values of $x_2$, so these lines fit the data better than the lines in part (c). But they still do not account for the non-linearity between $x_1$ and $y$. And equation with an $x_1^2$ term would fit much better.
+  
+  \item (3 points) There is no replication (multiple experimental runs at a particular NaOH-Time combination). Replication would validate any conclusions drawn from the experiment, and it would allow for better comparisons among the different possible fitted equations.
+  
+  \item (3 points)
+  This data has a complete (full) factorial structure. The straight-line least squares equation for $x_1$ is 
+  \[\hat{y} = 5.0317 + .14167 x_1\]
+  with a corresponding $R^2$ of .594. The straight-line least squares equation for $x_2$ is
+  \[\hat{y} = 7.3233 - .01694 x_2\]
+  with a corresponding $R^2$ of .212. The slopes in these one-variable linear equations are the same as the corresponding slopes in the two-variable equation from (a). The $R^2$ value in (a) is the sum of the $R^2$ values from the two one-variable linear equations.
+  \end{enumerate}
+\end{enumerate}
+%\newpage 
+%\nocite{*}
+%\bibliographystyle{plainnat} 
+%\bibliography{}
+\end{document}

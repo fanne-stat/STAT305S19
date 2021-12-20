@@ -1,0 +1,6 @@
+\frametitle{Example: cars}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=.8\textwidth,height=.8\textheight]{figure/unnamed-chunk-4-1}
+
+\end{knitrout}

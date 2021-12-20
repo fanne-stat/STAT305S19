@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Multiple Regression and ANOVA}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Sums of squares}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Advanced inference for multiple regression}{6}{0}{1}
+\beamer@subsectionintoc {1}{3}{The F test statistic and $R^2$}{22}{0}{1}

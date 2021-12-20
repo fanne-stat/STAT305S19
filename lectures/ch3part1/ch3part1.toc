@@ -1,0 +1,9 @@
+\beamer@sectionintoc {1}{What is descriptive statistics?}{2}{0}{1}
+\beamer@sectionintoc {2}{Graphical and Tabular Displays}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Dot diagrams}{5}{0}{2}
+\beamer@subsectionintoc {2}{2}{Stem and leaf plots}{10}{0}{2}
+\beamer@subsectionintoc {2}{3}{Frequency tables}{13}{0}{2}
+\beamer@subsectionintoc {2}{4}{Histograms}{15}{0}{2}
+\beamer@subsectionintoc {2}{5}{Bar plots}{18}{0}{2}
+\beamer@subsectionintoc {2}{6}{Scatterplots}{21}{0}{2}
+\beamer@sectionintoc {3}{Quantiles}{24}{0}{3}

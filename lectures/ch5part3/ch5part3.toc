@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Introduction to Continuous Random Variables}{2}{0}{1}
+\beamer@sectionintoc {2}{Probability Density Functions}{7}{0}{2}
+\beamer@sectionintoc {3}{Cumulative Distribution Functions}{17}{0}{3}
+\beamer@sectionintoc {4}{A special case: the exponential distribution}{24}{0}{4}

@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Boxplots}{2}{0}{1}
+\beamer@sectionintoc {2}{Quantile-Quantile (QQ) Plots}{7}{0}{2}
+\beamer@sectionintoc {3}{Theoretical Quantile-Quantile Plots}{16}{0}{3}
+\beamer@sectionintoc {4}{Numerical Summaries}{32}{0}{4}
+\beamer@sectionintoc {5}{Parameters}{61}{0}{5}

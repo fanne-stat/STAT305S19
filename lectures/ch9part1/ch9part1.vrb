@@ -1,0 +1,9 @@
+\frametitle{Plot the line to check the fit.} \small
+\begin{center}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=0.8\textwidth,height=0.8\textheight]{figure/unnamed-chunk-8-1}
+
+\end{knitrout}
+
+\end{center}

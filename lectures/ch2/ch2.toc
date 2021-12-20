@@ -1,0 +1,9 @@
+\beamer@sectionintoc {1}{Handling Extraneous Variables}{2}{0}{1}
+\beamer@sectionintoc {2}{Common Experimental Designs}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{Completely Randomized Design}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Factorial Design}{7}{0}{2}
+\beamer@subsectionintoc {2}{3}{Randomized Complete Block Design}{9}{0}{2}
+\beamer@sectionintoc {3}{Simple Random Sampling}{10}{0}{3}
+\beamer@sectionintoc {4}{Randomization}{15}{0}{4}
+\beamer@subsectionintoc {4}{1}{Randomization without blocks}{16}{0}{4}
+\beamer@subsectionintoc {4}{2}{Randomization with Blocks}{21}{0}{4}
